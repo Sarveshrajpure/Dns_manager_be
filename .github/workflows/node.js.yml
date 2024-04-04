@@ -25,5 +25,5 @@ jobs:
       - run: npm i
       - run: |
           touch .env
-          echo "${{ secrets.CG_BE_SECRET }}" > .env
+          echo "${{ secrets.DNSMANAGER_BE_SECRET }}" > .env
       - run: pm2 restart content_generator_be
