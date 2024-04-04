@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.0x]
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -25,5 +25,5 @@ jobs:
       - run: npm i
       - run: |
           touch .env
-          echo "${{ secrets.DNSMANAGER_BE_SECRET }}" > .env
+          echo "${{ secrets.DNSMANAGER_BE_SECRET}}" > .env
       - run: pm2 restart dns_manager_be
