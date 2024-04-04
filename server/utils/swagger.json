@@ -1,0 +1,254 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Carbon Cell APIS",
+    "description": ""
+  },
+  "host": "localhost:3002",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "Register params",
+            "in": "body",
+            "description": "Json data required to register a user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jhondoe@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "jhondoe123"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reponsds with registered user info",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "jhondoe@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "$2b$10$3DMTCEG/TGwkQt6AgW7tteUlw4HmBkZ5k5z5WJzt0lKbbVLZulNwi"
+                    },
+                    "firstName": {
+                      "type": "string",
+                      "example": "jhon"
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "example": "deo"
+                    },
+                    "_id": {
+                      "type": "string",
+                      "example": "660be614ed71f2b5991db5aa"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2024-04-02T11:03:48.798Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2024-04-02T11:03:48.798Z"
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "sigin params",
+            "in": "body",
+            "description": "Json data required to register a user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jhondoe@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "jhondoe123"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reponsds with user info and token and sets a cookie with token",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "jhondoe@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "$2b$10$3DMTCEG/TGwkQt6AgW7tteUlw4HmBkZ5k5z5WJzt0lKbbVLZulNwi"
+                    },
+                    "firstName": {
+                      "type": "string",
+                      "example": "jhon"
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "example": "deo"
+                    },
+                    "_id": {
+                      "type": "string",
+                      "example": "660be614ed71f2b5991db5aa"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2024-04-02T11:03:48.798Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2024-04-02T11:03:48.798Z"
+                    }
+                  }
+                },
+                "token": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MGJlNjE0ZmU3MWYyYjU5OTFkYjVhYSIsImlhdCI6MTcxMjA2NTk1NCwiZXhwIjoxNzEyMTUyMzU0fQ.ZXY5GFTYtmT7LqgYNMM_G9nO-F6wFBea4k-lL0mVimc"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/isauth": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reponsds with user info",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "jhondoe@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "$2b$10$3DMTCEG/TGwkQt6AgW7tteUlw4HmBkZ5k5z5WJzt0lKbbVLZulNwi"
+                    },
+                    "firstName": {
+                      "type": "string",
+                      "example": "jhon"
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "example": "deo"
+                    },
+                    "_id": {
+                      "type": "string",
+                      "example": "660be614ed71f2b5991db5aa"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2024-04-02T11:03:48.798Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2024-04-02T11:03:48.798Z"
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
