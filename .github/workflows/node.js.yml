@@ -26,4 +26,4 @@ jobs:
       - run: |
           touch .env
           echo "${{ secrets.DNSMANAGER_BE_SECRET }}" > .env
-      - run: pm2 restart content_generator_be
+      - run: pm2 restart dns_manager_be
