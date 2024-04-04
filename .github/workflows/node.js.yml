@@ -26,4 +26,4 @@ cache: "npm"
 - run: |
 touch .env
 echo "${{ secrets.PROD_ENV_FILE }}" > .env
-- run: pm2 restart dnsGeneratorBe
+- run: pm2 restart dnsManagerBe

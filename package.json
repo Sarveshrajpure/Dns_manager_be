@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Sarveshrajpure/Dns_manager_be#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "aws-sdk": "^2.1592.0",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
