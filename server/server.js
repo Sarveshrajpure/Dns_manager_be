@@ -6,7 +6,19 @@ const { convertToApiError, handleError } = require("./middlewares/error-handling
 const routes = require("./routes");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./utils/swagger.json");
+const cors = require("cors");
 require("dotenv").config();
+
+// CORS
+const corsOrigin = process.env.CORS_ORIGIN;
+app.use(
+  cors({
+    origin: corsOrigin || "http://localhost:3000",
+    methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Authorization", "Content-Type"],
+    credentials: true,
+  })
+);
 
 ///body parser
 app.use(express.json());
