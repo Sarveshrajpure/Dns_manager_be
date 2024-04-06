@@ -249,6 +249,282 @@
           }
         }
       }
+    },
+    "/hostedzone/list": {
+      "get": {
+        "description": "Lists the hosted zones / domians, requires authentication header with jwt token",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reponds with array of hosted zones",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "string",
+                    "example": "/hostedzone/Z0472483M6BA8LLI7PPC"
+                  },
+                  "Name": {
+                    "type": "string",
+                    "example": "sanika.com."
+                  },
+                  "CallerReference": {
+                    "type": "string",
+                    "example": "1712413573670"
+                  },
+                  "Config": {
+                    "type": "object",
+                    "properties": {
+                      "PrivateZone": {
+                        "type": "boolean",
+                        "example": false
+                      }
+                    }
+                  },
+                  "ResourceRecordSetCount": {
+                    "type": "number",
+                    "example": 7
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hostedzone/create": {
+      "post": {
+        "description": "Create New HostedZone/Domain",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "Register params",
+            "in": "body",
+            "description": "Json data required to create new hosted zone/domain",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "type": "string",
+                  "example": "sanika.com"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reponds with array of hosted zones",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Id": {
+                  "type": "string",
+                  "example": "/hostedzone/Z04892861KBDULDTL2HEZ"
+                },
+                "Name": {
+                  "type": "string",
+                  "example": "sarita.com."
+                },
+                "CallerReference": {
+                  "type": "string",
+                  "example": "1712423156380"
+                },
+                "Config": {
+                  "type": "object",
+                  "properties": {
+                    "PrivateZone": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                },
+                "ResourceRecordSetCount": {
+                  "type": "number",
+                  "example": 2
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hostedzone/delete/{id}": {
+      "delete": {
+        "description": "Deletes HostedZone/Domain",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Hosted zone id"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response example",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "metadata": {
+                  "type": "object",
+                  "properties": {
+                    "httpStatusCode": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "example": "40f4a71d-91d8-4807-9e4b-7c521f51a984"
+                    },
+                    "attempts": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "totalRetryDelay": {
+                      "type": "number",
+                      "example": 0
+                    }
+                  }
+                },
+                "ChangeInfo": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "string",
+                      "example": "/change/C05934751CTR9TAO1280H"
+                    },
+                    "Status": {
+                      "type": "string",
+                      "example": "PENDING"
+                    },
+                    "SubmittedAt": {
+                      "type": "string",
+                      "example": "2024-04-06T17:17:18.763Z"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "metadata"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dns/listdnsrecords": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dns/getdnsrecordmetrics": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dns/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dns/update": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dns/delete": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   }
 }

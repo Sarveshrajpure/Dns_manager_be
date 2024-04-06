@@ -15,13 +15,13 @@ app.use(express.json());
 app.use(mongoSanitize());
 
 //mongodb connection
-const mongoUri = `mongodb+srv://${process.env.DB_ADMIN}:${process.env.DB_PASS}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
+const mongoUri = `mongodb+srv://${process.env.DB_ADMIN}:${process.env.DB_PASS}@${process.env.DB_HOST}?retryWrites=true&w=majority&appName=DnsManagerProjectCluster`;
 mongoose
   .connect(mongoUri)
   .then(() => {
     console.log("Connected to MongoDB");
   })
-  .catch(() => {
+  .catch((err) => {
     console.log("Couldn't connect to MongoDB");
   });
 

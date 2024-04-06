@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Sarveshrajpure/Dns_manager_be#readme",
   "dependencies": {
+    "@aws-sdk/client-route-53": "^3.549.0",
     "@hapi/joi": "^17.1.1",
     "aws-sdk": "^2.1592.0",
     "axios": "^1.6.8",
