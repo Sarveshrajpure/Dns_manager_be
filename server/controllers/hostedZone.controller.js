@@ -3,12 +3,14 @@ require("dotenv").config();
 const {
   createHostedZoneSchema,
   deleteHostedZoneSchema,
+  updateHostedZoneSchema,
 } = require("../validations/hostedZonesValidations");
 const {
   Route53Client,
   ListHostedZonesCommand,
   CreateHostedZoneCommand,
   DeleteHostedZoneCommand,
+  UpdateHostedZoneCommentCommand,
 } = require("@aws-sdk/client-route-53");
 const route53Client = new Route53Client({ region: "ap-south-1" });
 
@@ -52,7 +54,11 @@ const domainController = {
     } */
       let values = await createHostedZoneSchema.validateAsync(req.body);
       let createHostedZone = await route53Client.send(
-        new CreateHostedZoneCommand({ CallerReference: Date.now(), Name: values.Name })
+        new CreateHostedZoneCommand({
+          CallerReference: Date.now(),
+          Name: values.Name,
+          HostedZoneConfig: values.HostedZoneConfig,
+        })
       );
 
       /* #swagger.responses[200] = {
@@ -100,6 +106,18 @@ const domainController = {
             } 
         } */
       res.status(httpStatus.OK).send(deletedHostedZone);
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  async updateHostedZone(req, res, next) {
+    try {
+      let values = await updateHostedZoneSchema.validateAsync(req.body);
+
+      let updatedHostedZone = await route53Client.send(new UpdateHostedZoneCommentCommand(values));
+
+      res.status(httpStatus.OK).send(updatedHostedZone.HostedZone);
     } catch (err) {
       next(err);
     }

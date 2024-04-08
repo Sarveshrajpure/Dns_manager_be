@@ -10,7 +10,6 @@ const auth = () => async (req, res, next) => {
 
     let accessToken = authHeader && authHeader.split(" ")[1];
 
-    console.log(accessToken);
     if (!accessToken) {
       throw new ApiError(httpStatus.UNAUTHORIZED, "Unauthorized user!");
     }
