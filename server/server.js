@@ -15,7 +15,6 @@ app.use(
   cors({
     origin: ["https://dns-manager-66rs3jll7-sarveshrajpures-projects.vercel.app"],
     methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Authorization", "Content-Type"],
     credentials: true,
   })
 );
