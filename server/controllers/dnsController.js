@@ -17,7 +17,6 @@ const dnsController = {
 
       res.status(httpStatus.OK).send(dnsRecords);
     } catch (err) {
-      console.log(err);
       next(err);
     }
   },
@@ -31,7 +30,6 @@ const dnsController = {
 
       res.status(httpStatus.CREATED).send(createRecord);
     } catch (err) {
-      console.log(err);
       next(err);
     }
   },

@@ -15,7 +15,6 @@ const changesSchema = Joi.array()
   .max(1);
 
 const dnsRecordCRUDSchema = Joi.object({
-  Name: Joi.string().required(),
   ChangeBatch: Joi.object({
     Changes: changesSchema,
   }).required(),
