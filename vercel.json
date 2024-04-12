@@ -2,8 +2,8 @@
   "version": 2,
   "rewrites": [
     {
-      "builds": [{ "src": "./server/server/js", "use": "@vercel/node" }],
-      "routes": [{ "src": "/(.*)", "dest": "/" }]
+      "builds": [{ "src": "./server/server.js", "use": "@vercel/node" }],
+      "routes": [{ "src": "/(.*)", "dest": "/server/server.js" }]
     }
   ]
 }
