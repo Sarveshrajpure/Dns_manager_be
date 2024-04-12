@@ -13,7 +13,7 @@ require("dotenv").config();
 const corsOrigin = process.env.CORS_ORIGIN;
 app.use(
   cors({
-    origin: ["https://dns-manager-66rs3jll7-sarveshrajpures-projects.vercel.app"],
+    origin: corsOrigin || "http://localhost:3000",
     methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
